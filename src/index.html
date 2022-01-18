@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="favicons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="favicons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="favicons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="favicons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="favicons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+  <link rel="manifest" href="favicons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>Weather Station</title>
+  <link rel="stylesheet" href="./index.css">
+  <script type="module" src="./index.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="toggle-theme" id="toggle-theme">
+      <img src="./assets/moon.svg" alt="" class="toggle-theme__icon" id="toggle-icon">
+      <p class="toggle-theme__text" id="toggle-text">Dark Mode</p>
+    </div>
+  </header>
+  <main class="main">
+    <h1 class="title">Weather Station</h1>
+    <div class="container">
+      <div class="card">
+        <h1 class="card__title">Temperature</h1>
+        <h2 class="card__value" id="tempValue">0<span>°</span></h2>
+        <footer class="footer">
+          <div class="value min">
+            <img src="./assets/min.svg" alt="min value" class="value__min-icon">
+            <span class="value__value" id="tempMin">0</span><span>°</span>
+            <div class="clock">
+              <img src="./assets/clock.svg" alt="clock" class="clock__clock-icon">
+              <span class="clock__clock-value" id="tempClockMin">00:00</span>
+            </div>
+          </div>
+          <img src="./assets/icon-temperature.svg" alt="icon sensor">
+          <div class="value max">
+            <span class="value__value" id="tempMax">0</span><span>°</span>
+            <img src="./assets/max.svg" alt="max value" class="value__max-icon">
+            <div class="clock">
+              <img src="./assets/clock.svg" alt="clock" class="clock__clock-icon">
+              <span class="clock__clock-value" id="tempClockMax">0:00</span>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <div class="card">
+        <h1 class="card__title">Humidity</h1>
+        <h2 class="card__value" id="humValue">0</h2>
+        <footer class="footer">
+          <div class="value min">
+            <img src="./assets/min.svg" alt="min value" class="value__min-icon">
+            <span class="value__value" id="humMin">0</span><span>%</span>
+            <div class="clock">
+              <img src="./assets/clock.svg" alt="clock" class="clock__clock-icon">
+              <span class="clock__clock-value" id="humClockMin">00:00</span>
+            </div>
+          </div>
+          <img src="./assets/icon-humidity.svg" alt="icon sensor">
+          <div class="value max">
+            <span class="value__value" id="humMax">0</span><span>%</span>
+            <img src="./assets/max.svg" alt="max value" class="value__max-icon">
+            <div class="clock">
+              <img src="./assets/clock.svg" alt="clock" class="clock__clock-icon">
+              <span class="clock__clock-value" id="humClockMax">0:00</span>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+    </div>
+  </main>
+</body>
+</html>
