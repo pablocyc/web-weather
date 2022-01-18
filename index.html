@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+  
+  <script type="module" crossorigin src="/web-weather/index.a5db8ac1.js"></script>
+  <link rel="stylesheet" href="/web-weather/index.23085568.css">
+</head>
+<body>
+  <header class="header">
+    <div class="toggle-theme" id="toggle-theme">
+      <img src="/web-weather/moon.2212dae5.svg" alt="" class="toggle-theme__icon" id="toggle-icon">
+      <p class="toggle-theme__text" id="toggle-text">Dark Mode</p>
+    </div>
+  </header>
+  <main class="main">
+    <h1 class="title">Weather Station</h1>
+    <div class="container">
+      <div class="card">
+        <h1 class="card__title">Temperature</h1>
+        <h2 class="card__value" id="tempValue">0<span>°</span></h2>
+        <footer class="footer">
+          <div class="value min">
+            <img src="/web-weather/min.d4804f20.svg" alt="min value" class="value__min-icon">
+            <span class="value__value" id="tempMin">0</span><span>°</span>
+            <div class="clock">
+              <img src="/web-weather/clock.e53a0f81.svg" alt="clock" class="clock__clock-icon">
+              <span class="clock__clock-value" id="tempClockMin">00:00</span>
+            </div>
+          </div>
+          <img src="/web-weather/icon-temperature.4b1c543b.svg" alt="icon sensor">
+          <div class="value max">
+            <span class="value__value" id="tempMax">0</span><span>°</span>
+            <img src="/web-weather/max.3049509f.svg" alt="max value" class="value__max-icon">
+            <div class="clock">
+              <img src="/web-weather/clock.e53a0f81.svg" alt="clock" class="clock__clock-icon">
+              <span class="clock__clock-value" id="tempClockMax">0:00</span>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <div class="card">
+        <h1 class="card__title">Humidity</h1>
+        <h2 class="card__value" id="humValue">0</h2>
+        <footer class="footer">
+          <div class="value min">
+            <img src="/web-weather/min.d4804f20.svg" alt="min value" class="value__min-icon">
+            <span class="value__value" id="humMin">0</span><span>%</span>
+            <div class="clock">
+              <img src="/web-weather/clock.e53a0f81.svg" alt="clock" class="clock__clock-icon">
+              <span class="clock__clock-value" id="humClockMin">00:00</span>
+            </div>
+          </div>
+          <img src="/web-weather/icon-humidity.0d3692f9.svg" alt="icon sensor">
+          <div class="value max">
+            <span class="value__value" id="humMax">0</span><span>%</span>
+            <img src="/web-weather/max.3049509f.svg" alt="max value" class="value__max-icon">
+            <div class="clock">
+              <img src="/web-weather/clock.e53a0f81.svg" alt="clock" class="clock__clock-icon">
+              <span class="clock__clock-value" id="humClockMax">0:00</span>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+    </div>
+  </main>
+</body>
+</html>
