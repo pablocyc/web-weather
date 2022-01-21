@@ -28,49 +28,33 @@ const starCountRef = ref(db, FIREBASE.firebasePath);
 onValue(starCountRef, (snapshot) => {
   const time = new Date();
   const data = snapshot.val();
+  const options = { hour: "numeric", minute: "numeric", hourCycle: "h24" };
 
   tempValue.innerHTML = data.temperature.value + '<span>°</span>';
   humValue.innerHTML = data.humidity.value + '<span>%</span>';
   
   if (tempClockMin.innerHTML === '00:00') {
-    tempClockMin.innerHTML = data.temperature.clockMin;
-    tempClockMax.innerHTML = data.temperature.clockMax;
+    tempClockMin.innerHTML = new Intl.DateTimeFormat('es-US', options).format(data.temperature.clockMin)
+    tempClockMax.innerHTML = new Intl.DateTimeFormat('es-US', options).format(data.temperature.clockMax)
+    humClockMin.innerHTML = new Intl.DateTimeFormat('es-US', options).format(data.humidity.clockMin)
+    humClockMax.innerHTML = new Intl.DateTimeFormat('es-US', options).format(data.humidity.clockMax)
     tempMin.innerHTML = data.temperature.min;
     tempMax.innerHTML = data.temperature.max;
-    humClockMin.innerHTML = data.humidity.clockMin;
-    humClockMax.innerHTML = data.humidity.clockMax;
     humMin.innerHTML = data.humidity.min;
     humMax.innerHTML = data.humidity.max;
   }
 
   if (tempMin.innerHTML !== data.temperature.min) {
-    const hourNow = time.getHours() + ":" + time.getMinutes();
-    tempClockMin.innerHTML = hourNow;
-    update(ref(db, FIREBASE.firebasePath + '/temperature'), {
-      clockMin: hourNow
-    });
+    tempClockMin.innerHTML = new Intl.DateTimeFormat('es-US', options).format(data.temperature.clockMin)
+  }
+  if (tempMax.innerHTML !== data.temperature.max) {
+    tempClockMax.innerHTML = new Intl.DateTimeFormat('es-US', options).format(data.temperature.clockMax)
   }
   if (humMin.innerHTML !== data.humidity.min) {
-    const hourNow = time.getHours() + ":" + time.getMinutes();
-    humClockMin.innerHTML = hourNow;
-    update(ref(db, FIREBASE.firebasePath + '/humidity'), {
-      clockMin: hourNow
-    });
-  }
-
-  if (tempMax.innerHTML !== data.temperature.max) {
-    const hourNow = time.getHours() + ":" + time.getMinutes();
-    tempClockMax.innerHTML = hourNow;
-    update(ref(db, FIREBASE.firebasePath + '/temperature'), {
-      clockMax: hourNow
-    });
+    humClockMin.innerHTML = new Intl.DateTimeFormat('es-US', options).format(data.humidity.clockMin)
   }
   if (humMax.innerHTML !== data.humidity.max) {
-    const hourNow = time.getHours() + ":" + time.getMinutes();
-    humClockMax.innerHTML = hourNow;
-    update(ref(db, FIREBASE.firebasePath + '/humidity'), {
-      clockMax: hourNow
-    });
+    humClockMax.innerHTML = new Intl.DateTimeFormat('es-US', options).format(data.humidity.clockMax)
   }
 
   tempMin.innerHTML = data.temperature.min;
