@@ -18,16 +18,17 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="favicons/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
-  <link rel="manifest" href="favicons/manifest.json">
+  <!-- <link rel="manifest" href="favicons/manifest.json">
   <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-  <meta name="theme-color" content="#ffffff">
-
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png"> -->
+  <meta name="theme-color" content="#111827">
+  <link rel="manifest" href="data:application/manifest+json;base64,ewogICJzaG9ydF9uYW1lIjogIndlYXRoZXIiLAogICJuYW1lIjogIldlYXRoZXIgU3RhdGlvbiIsCiAgImRlc2NyaXB0aW9uIjogIkFwcCBwYXJhIG1vbml0b3ppcmFyIHNlbnNvcmVzIGVuIHRpZW1wbyByZWFsIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMTExODI3IiwKICAidGhlbWVfY29sb3IiOiAiIzExMTgyNyIsCiAgIm9yaWVudGF0aW9uIjogInBvcnRyYWl0IiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAic3RhcnRfdXJsIjogIi4iLAogICJzY29wZSI6ICIuIiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiaWNvbnMvaWNvbi13ZWF0aGVyLTE0NC5wbmciLAogICAgICAic2l6ZXMiOiAiMTQ0eDE0NCIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiaWNvbnMvaWNvbi13ZWF0aGVyLTE5Mi5wbmciLAogICAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiaWNvbnMvaWNvbi13ZWF0aGVyLTI1Ni5wbmciLAogICAgICAic2l6ZXMiOiAiMjU2eDI1NiIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiaWNvbnMvaWNvbi13ZWF0aGVyLTM4NC5wbmciLAogICAgICAic2l6ZXMiOiAiMzg0eDM4NCIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiaWNvbnMvaWNvbi13ZWF0aGVyLTUxMi5wbmciLAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIKICAgIH0KICBdCn0=">
+  
   <title>Weather Station</title>
   
   
-  <script type="module" crossorigin src="/web-weather/index.e5a822a3.js"></script>
-  <link rel="stylesheet" href="/web-weather/index.bd774c08.css">
+  <script type="module" crossorigin src="/web-weather/index.09fd4638.js"></script>
+  <link rel="stylesheet" href="/web-weather/index.c318c6e4.css">
 </head>
 <body>
   <header class="header">
@@ -37,11 +38,13 @@
     </div>
   </header>
   <main class="main">
-    <h1 class="title">Weather Station</h1>
+    <h1 class="main__title">Cochabamba</h1>
+    <p class="main__subtitle" id="todayText"></p>
+    <img class="card__icon" src="/web-weather/Moon cloud mid rain.261078ce.png" alt="icon3d cloud">
     <div class="container">
       <div class="card">
-        <h1 class="card__title">Temperature</h1>
-        <h2 class="card__value" id="tempValue">0<span>°</span></h2>
+        <h3 class="card__title">Temperature</h3>
+        <h3 class="card__value" id="tempValue">0<span>°</span></h3>
         <footer class="footer">
           <div class="value min">
             <img src="/web-weather/min.d4804f20.svg" alt="min value" class="value__min-icon">
@@ -63,8 +66,8 @@
         </footer>
       </div>
       <div class="card">
-        <h1 class="card__title">Humidity</h1>
-        <h2 class="card__value" id="humValue">0</h2>
+        <h3 class="card__title">Humidity</h3>
+        <h3 class="card__value" id="humValue">0</h3>
         <footer class="footer">
           <div class="value min">
             <img src="/web-weather/min.d4804f20.svg" alt="min value" class="value__min-icon">
