@@ -4,8 +4,8 @@ import { FIREBASE } from "./config.js";
 
 const toggleTheme = document.getElementById('toggle-theme')
 const toggleIcon = document.getElementById('toggle-icon')
-export const toggleText = document.getElementById('toggle-text')
-const path = "./assets/";
+const toggleText = document.getElementById('toggle-text')
+const todayText = document.getElementById('todayText')
 
 const app = initializeApp(FIREBASE.firebaseConfig);
 const db = getDatabase();
@@ -24,11 +24,13 @@ const humClockMin = document.getElementById('humClockMin')
 const humClockMax = document.getElementById('humClockMax')
 
 const starCountRef = ref(db, FIREBASE.firebasePath);
+const date = new Date();
+const options = { weekday: 'long', month: 'long', day: 'numeric' };
+todayText.innerHTML = new Intl.DateTimeFormat('es-US', options).format(date);
 
 onValue(starCountRef, (snapshot) => {
-  const time = new Date();
   const data = snapshot.val();
-  const options = { hour: "numeric", minute: "numeric", hourCycle: "h24" };
+  const options = { hour: "numeric", minute: "numeric", hourCycle: "h24" }
 
   tempValue.innerHTML = data.temperature.value + '<span>°</span>';
   humValue.innerHTML = data.humidity.value + '<span>%</span>';
@@ -74,3 +76,15 @@ toggleTheme.addEventListener('click', () => {
     toggleText.textContent = 'Dark Mode'
   }
 })
+
+window.addEventListener('load', () => {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(registration => {
+        console.log('Service Worker registered!', registration);
+      })
+      .catch(err => {
+        console.log('Service Worker registration failed: ', err);
+      });
+  }
+});
