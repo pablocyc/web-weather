@@ -2,10 +2,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase
 import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js";
 import { FIREBASE } from "./config.js";
 
+let deferredPrompt;
+
 const toggleTheme = document.getElementById('toggle-theme')
 const toggleIcon = document.getElementById('toggle-icon')
 const toggleText = document.getElementById('toggle-text')
 const todayText = document.getElementById('todayText')
+const bannerInstall = document.getElementById('banner-install')
 
 const app = initializeApp(FIREBASE.firebaseConfig);
 const db = getDatabase();
@@ -77,14 +80,32 @@ toggleTheme.addEventListener('click', () => {
   }
 })
 
+window.addEventListener('beforeinstallprompt', e => {
+  console.log('............')
+  console.log('beforeinstallprompt')
+  e.preventDefault();
+  deferredPrompt = e;
+})
+
 window.addEventListener('load', () => {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js')
       .then(registration => {
-        console.log('Service Worker registered!', registration);
+        console.log('Service Worker registered!');
       })
       .catch(err => {
         console.log('Service Worker registration failed: ', err);
       });
   }
+
+  bannerInstall.addEventListener('click', () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(choiceResult => {
+        if (choiceResult === 'dismissed') {
+          console.log('User cancel the prompt');
+        }
+      });
+    }
+  })
 });

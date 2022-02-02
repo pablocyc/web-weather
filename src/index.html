@@ -23,6 +23,7 @@
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png"> -->
   <meta name="theme-color" content="#111827">
   <link rel="manifest" href="manifest.webmanifest">
+  <!-- <script async src="https://unpkg.com/pwacompat" crossorigin="anonymous"></script> -->
   
   <title>Weather Station</title>
   <link rel="stylesheet" href="./index.css">
@@ -30,6 +31,10 @@
 </head>
 <body>
   <header class="header">
+    <button class="app__button" role="button" id="banner-install">
+      <img src="icons/inbox-download-r.svg" alt="" class="icon-install">
+      Click para instalar
+    </button>
     <div class="toggle-theme" id="toggle-theme">
       <img src="./icons/moon.svg" alt="" class="toggle-theme__icon" id="toggle-icon">
       <p class="toggle-theme__text" id="toggle-text">Dark Mode</p>

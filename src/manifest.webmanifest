@@ -1,13 +1,13 @@
 {
-  "short_name": "weather",
+  "short_name": "weather-app",
   "name": "Weather Station",
   "description": "App para monitozirar sensores en tiempo real",
   "background_color": "#111827",
   "theme_color": "#111827",
   "orientation": "portrait",
   "display": "standalone",
-  "start_url": ".",
-  "scope": ".",
+  "start_url": "https://pablocyc.github.io/web-weather/",
+  "scope": "/",
   "icons": [
     {
       "src": "icons/icon-weather-144.png",
