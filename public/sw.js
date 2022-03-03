@@ -71,3 +71,20 @@ self.addEventListener('push', e => {
     icon: './assets/cloud-night.png'
   });
 })
+
+self.addEventListener('notificationclick', e => {
+  const notification = e.notification
+  const action = e.action
+
+  if (action === 'accept') {
+    console.log('Notification accepted')
+    notification.close()
+  } else {
+    console.log('Notification dismissed')
+    notification.close()
+  }
+})
+
+self.addEventListener('notificationclose', e => {
+  console.log('Notification was closed', e)
+})

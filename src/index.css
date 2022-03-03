@@ -94,6 +94,10 @@ body.dark {
   transition: var(--transition);
 }
 
+.icon-notification {
+  cursor: pointer;
+}
+
 /* .app-install {
   display: flex;
   align-items: center;
@@ -123,6 +127,8 @@ body.dark {
   padding-left: 4px;
   padding-right: 8px;
   font-style: italic;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .hidden {

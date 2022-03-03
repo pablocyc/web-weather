@@ -6,6 +6,7 @@ const toggleTheme = document.getElementById('toggle-theme')
 const toggleIcon = document.getElementById('toggle-icon')
 const toggleText = document.getElementById('toggle-text')
 const todayText = document.getElementById('todayText')
+const bell = document.getElementById('icon-bell')
 const bannerInstall = document.getElementById('banner-install')
 
 const app = initializeApp(FIREBASE.firebaseConfig);
@@ -66,13 +67,50 @@ onValue(starCountRef, (snapshot) => {
   humMax.innerHTML = data.humidity.max;
 });
 
+const requestPermission = async () => {
+  const permission = await Notification.requestPermission();
+  if (permission !== 'granted') {
+    const data = {
+      message: 'Notificaciones desactivadas',
+      timeout: 5000
+    }
+    MessageChannel('error').MaterialSnackbar.showSnackbar(data);
+  } else {
+    showNotification()
+  }
+}
+
+function showNotification () {
+  // new Notification('Notificaciones activadas')
+  navigator.serviceWorker.getRegistration()
+    .then(registration => {
+      registration.showNotification('Activar notificaciones', {
+        body: 'Para desactivar las notificaciones, vuelve a presionar el botón',
+        icon: './icons/icon-weather-192.png',
+        badge: './icons/weather-shot.jpg',
+        dir: 'ltr',
+        vibrate: [100, 50, 100],
+        tag: 'notification-permission-active',
+        requireInteraction: true,
+        actions: [
+          {action: 'accept', title: 'Aceptar', icon: './icons/check-solid.svg'},
+          {action: 'cancel', title: 'Cancelar', icon: './icons/cancel-solid.svg'}
+        ]
+      });
+    })
+    .catch(error => console.error(error.message))
+}
+
+bell.addEventListener('click', requestPermission);
 
 toggleTheme.addEventListener('click', () => {
   document.body.classList.toggle('dark')
   if (toggleIcon.src.includes('moon.svg')) {
+    bell.src = bell.src.replace('light', 'dark')
     toggleIcon.src = './icons/sun.svg'
     toggleText.textContent = 'Light Mode';
   } else {
+    bell.src = bell.src.replace('dark', 'light')
     toggleIcon.src = './icons/moon.svg'
     toggleText.textContent = 'Dark Mode'
   }
