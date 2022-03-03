@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "Roboto";
+  font-family: Roboto;
   font-weight: 500;
   src:
     url("fonts/Roboto-500-normal.woff2") format("woff2"),
@@ -8,23 +8,25 @@
 }
 
 @font-face {
-  font-family: "Montserrat";
+  font-family: Montserrat;
   font-weight: 300;
   src:
     url("fonts/Montserrat-300-italic.woff2") format("woff2"),
     url("fonts/Montserrat-300-italic.woff") format("woff"),
     url("fonts/Montserrat-300-italic.ttf") format("truetype");
 }
+
 @font-face {
-  font-family: "Montserrat";
+  font-family: Montserrat;
   font-weight: 500;
   src:
     url("fonts/Montserrat-500-normal.woff2") format("woff2"),
     url("fonts/Montserrat-500-normal.woff") format("woff"),
     url("fonts/Montserrat-500-normal.ttf") format("truetype");
 }
+
 @font-face {
-  font-family: "Montserrat";
+  font-family: Montserrat;
   font-weight: 700;
   src:
     url("fonts/Montserrat-700-normal.woff2") format("woff2"),
@@ -33,13 +35,13 @@
 }
 
 :root {
-  --primary-color: #9F7DE1;
+  --primary-color: #9f7de1;
   --text-color: #222;
-  --bg-color: hsl(0, 0%, 93%);
-  --bg-card-color: hsl(0, 0%, 98%);
+  --bg-color: #ededed;
+  --bg-card-color: #fafafa;
   --border-radius: 0.4em;
   --transition: color 0.1s, background-color 0.2s ease-in-out;
-  --box-shadow: rgba(176, 190, 197, 0.42);
+  --box-shadow: #b0bec56b;
 }
 
 * {
@@ -52,20 +54,21 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: var(--transition);
-  font-family: "Montserrat", sans-serif;
+  font-family: Montserrat, sans-serif;
 }
 
 body.dark {
-  --text-color: hsl(0, 0%, 93%);
-  --box-shadow: rgb(37, 37, 37);
+  --text-color: #ededed;
+  --box-shadow: #252525;
   --bg-color: #111827;
-  --bg-card-color: #272F3A;
+  --bg-card-color: #272f3a;
 }
 
 .main {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -77,6 +80,7 @@ body.dark {
   .main {
     margin-top: 3rem;
   }
+
   .container {
     margin-top: 4rem;
   }
@@ -107,7 +111,7 @@ body.dark {
   background-color: var(--primary-color);
   border-radius: 4px;
   border-width: 0;
-  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-shadow: #2d234266 0 2px 4px, #2d23424d 0 7px 13px -3px,#d6d6e7 0 -3px 0 inset;
   display: inline-flex;
   color: #ededed;
   cursor: pointer;
@@ -119,6 +123,10 @@ body.dark {
   padding-left: 4px;
   padding-right: 8px;
   font-style: italic;
+}
+
+.hidden {
+  display: none;
 }
 
 .toggle-theme {
@@ -141,6 +149,7 @@ body.dark {
   margin: 0;
   transition: var(--transition);
 }
+
 .main__subtitle {
   text-align: center;
   font-weight: 300;
@@ -154,7 +163,6 @@ body.dark {
   background-color: var(--bg-card-color);
   border-radius: var(--border-radius);
   width: 270px;
-  /* height: 265px; */
   overflow: hidden;
   margin: 0 auto;
   box-shadow: 0px 3.38px 5.64px 0px var(--box-shadow);
@@ -208,14 +216,16 @@ body.dark {
   padding-right: 1rem;
   font-family: Roboto, sans-serif;
 }
+
 .value.max {
   justify-content: flex-start;
 }
 
-.value__min-icon ,
+.value__min-icon,
 .clock__clock-icon{
   padding-right: 0.25rem;
 }
+
 .value__max-icon {
   padding-left: 0.15rem;
 }
@@ -231,6 +241,7 @@ body.dark {
   margin-top: 0.4rem;
   text-align: right;
 }
+
 .clock__clock-icon {
   margin: auto 0;
 }

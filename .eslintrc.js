@@ -11,7 +11,7 @@ module.exports = {
     sourceType: "module"
   },
   rules: {
-    quotes: ["error", "double"],
+    quotes: ["error", "simple"],
     semi: ["error", "always"],
     "comma-dangle": ["error", "only-multiline"],
     "space-before-function-paren": ["error", "never"]

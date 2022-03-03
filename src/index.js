@@ -2,8 +2,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase
 import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js";
 import { FIREBASE } from "./config.js";
 
-let deferredPrompt;
-
 const toggleTheme = document.getElementById('toggle-theme')
 const toggleIcon = document.getElementById('toggle-icon')
 const toggleText = document.getElementById('toggle-text')
@@ -80,12 +78,49 @@ toggleTheme.addEventListener('click', () => {
   }
 })
 
-window.addEventListener('beforeinstallprompt', e => {
-  console.log('............')
-  console.log('beforeinstallprompt')
+// Inicializa deferredPrompt para su uso más tarde.
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Previene a la mini barra de información que aparezca en smartphones
   e.preventDefault();
+  // Guarda el evento para que se dispare más tarde
   deferredPrompt = e;
-})
+  // Actualizar la IU para notificarle al usuario que se puede instalar tu PWA
+  showInstallPromotion();
+  // De manera opcional, envía el evento de analíticos para saber si se mostró la promoción a a instalación del PWA
+  console.log(`'beforeinstallprompt' event was fired.`);
+});
+
+function showInstallPromotion () {
+  bannerInstall.classList.remove('hidden');
+}
+
+bannerInstall.addEventListener('click', async () => {
+  // Esconde la información promotora de la instalación
+  hideInstallPromotion();
+  // Muestre el mensaje de instalación
+  deferredPrompt.prompt();
+  // Espera a que el usuario responda al mensaje
+  const { outcome } = await deferredPrompt.userChoice;
+  // De manera opcional, envía analíticos del resultado que eligió el usuario
+  console.log(`User response to the install prompt: ${outcome}`);
+  // Como ya usamos el mensaje, no lo podemos usar de nuevo, este es descartado
+  deferredPrompt = null;
+});
+
+window.addEventListener('appinstalled', () => {
+  // Esconder la promoción de instalación de la PWA
+  hideInstallPromotion();
+  // Limpiar el defferedPrompt para que pueda ser eliminado por el recolector de basura
+  deferredPrompt = null;
+  // De manera opcional, enviar el evento de analíticos para indicar una instalación exitosa
+  console.log('PWA was installed');
+});
+
+function hideInstallPromotion () {
+  bannerInstall.classList.add('hidden');
+}
 
 window.addEventListener('load', () => {
   if ('serviceWorker' in navigator) {
@@ -97,15 +132,4 @@ window.addEventListener('load', () => {
         console.log('Service Worker registration failed: ', err);
       });
   }
-
-  bannerInstall.addEventListener('click', () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(choiceResult => {
-        if (choiceResult === 'dismissed') {
-          console.log('User cancel the prompt');
-        }
-      });
-    }
-  })
 });
