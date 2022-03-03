@@ -62,3 +62,29 @@ self.addEventListener("fetch", (event) => {
   // si nuestra condición de if() es falso, el controlador de fetch no atrapará la solicitud. Si hay más controladores de fetch registrados, ellos tendrán la oportunidad de llamar a event.respondWith(). 
   // De lo contrario, si no hay, no se llamará a event.respondWith(), la solicitud será controlada por el buscador como si no los service worker no se hubieran involucrado.
 });
+
+self.addEventListener('push', e => {
+  const data = e.data.json();
+  console.log('push', data);
+  self.registration.showNotification(data.title, {
+    body: data.body,
+    icon: './assets/cloud-night.png'
+  });
+})
+
+self.addEventListener('notificationclick', e => {
+  const notification = e.notification
+  const action = e.action
+
+  if (action === 'accept') {
+    console.log('Notification accepted')
+    notification.close()
+  } else {
+    console.log('Notification dismissed')
+    notification.close()
+  }
+})
+
+self.addEventListener('notificationclose', e => {
+  console.log('Notification was closed', e)
+})
