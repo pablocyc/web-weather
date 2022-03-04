@@ -69,7 +69,7 @@ self.addEventListener("push", e => {
   console.log("push", data)
   self.registration.showNotification(data.title, {
     body: data.body,
-    icon: "./assets/cloud-night.png"
+    icon: "./icons/weather-shot.jpg"
   })
 })
 
